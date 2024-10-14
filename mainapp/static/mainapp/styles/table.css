@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.section-title {
+    display: inline-block;
+    background-color: #2a51d3; /* Синий фон заголовка */
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.section-number {
+    display: inline-block;
+    background-color: #2a51d3; /* Синий фон номера секции */
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.table-container {
+    max-width: 1200px; /* Максимальная ширина таблицы */
+    margin: 0 auto; /* Центрирование таблицы */
+    padding: 10px; /* Отступы по бокам */
+    background-color: white; /* Фон для области таблицы */
+}
+table {
+    width: 100%;
+    border-collapse: collapse; /* Убираем двойные границы */
+    background-color: white; /* Белый фон таблицы */
+    margin-top: 10px;
+}
+th, td {
+    border-top: 1px solid black; /* Только горизонтальные верхние границы */
+    border-bottom: 1px solid black; /* Только горизонтальные нижние границы */
+    padding: 10px;
+    text-align: left;
+}
+th {
+    font-weight: bold;
+    color: green; /* Зеленый цвет текста в заголовке */
+}
+th:first-child {
+    background-color: white;
+}
+th:last-child {
+    background-color: white;
+    color: green;
+}
+td {
+    color: black;
+}

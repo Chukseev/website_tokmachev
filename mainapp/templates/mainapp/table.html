@@ -1,0 +1,23 @@
+{% load static %}
+<div class="table-container">
+<!--    Вот это хочу получать-->
+    <link rel="stylesheet" href="{% static 'mainapp/styles/table.css' %}">
+    <h3>СКЛАДСКАЯ ОБРАБОТКА</h3>
+    <table>
+        <thead>
+        <tr>
+<!--            и это-->
+            <th>     </th>
+            <th>Стоимость услуг</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for el in warehouse_processing_items %}
+        <tr>
+            <td>{{ el }}</td>
+            <td>{{ el.price }} {{el.unit}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

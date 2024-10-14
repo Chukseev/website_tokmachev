@@ -1,90 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Table with Padding</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .section-title {
-            display: inline-block;
-            background-color: #2a51d3; /* Синий фон заголовка */
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .section-number {
-            display: inline-block;
-            background-color: #2a51d3; /* Синий фон номера секции */
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        .table-container {
-            max-width: 1200px; /* Максимальная ширина таблицы */
-            margin: 0 auto; /* Центрирование таблицы */
-            padding: 10px; /* Отступы по бокам */
-            background-color: white; /* Фон для области таблицы */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse; /* Убираем двойные границы */
-            background-color: white; /* Белый фон таблицы */
-            margin-top: 10px;
-        }
-        th, td {
-            border-top: 1px solid black; /* Только горизонтальные верхние границы */
-            border-bottom: 1px solid black; /* Только горизонтальные нижние границы */
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            font-weight: bold;
-            color: green; /* Зеленый цвет текста в заголовке */
-        }
-        th:first-child {
-            background-color: white;
-        }
-        th:last-child {
-            background-color: white;
-            color: green;
-        }
-        td {
-            color: black;
-        }
-
-    </style>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./src/styles/style.css">
+    <title>Market</title>
 </head>
 <body>
+<header class="header">
+    <div class="header__wrapper">
+        <a class="header__logo" href="#">
+            <img src="/src/img/logo.jpg" alt="ATM Logo" height="40" width="40">
+        </a>
+        <div class="header__actions">
+        </div>
 
-
-    <div class="table-container">
-        <h3>СКЛАДСКАЯ ОБРАБОТКА</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>     </th>
-                    <th>Стоимость услуг</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for el in warehouse_processing_items %}
-            <tr>
-                <td>{{ el }}</td>
-                <td>{{ el.price }} {{el.unit}}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </div>
-<div><form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form></div>
+</header>
+<main>
+    <section class="section hero">
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title">Цены и тарифы <span class="text-color-accent">на фулфилмент</span></h1>
+            </div>
+        </div>
+    </section>
+    <section class="section prices">
+        <div class="container">
+            {% include 'mainapp/table.html' with items=warehouse_processing_items %}
+        </div>
+    </section>
+    <section class="section callback">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</main>
+<footer>
+
+</footer>
 </body>
 </html>
