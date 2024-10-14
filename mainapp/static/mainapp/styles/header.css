@@ -3,5 +3,28 @@
 }
 
 .header__wrapper {
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
+}
+
+.header__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo__title {
+    color: #1b1b1b;
+    font-size: 36px;
+}
+
+@media (max-width: 767px) {
+    .header__wrapper {
+        padding-block: 4px;
+    }
+    .logo__title {
+        font-size: 16px;
+    }
 }
