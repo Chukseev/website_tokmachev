@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # 1. Модель для складской обработки
 class WarehouseProcessing(models.Model):
     service_name = models.CharField(max_length=255)
@@ -9,6 +8,10 @@ class WarehouseProcessing(models.Model):
 
     def __str__(self):
         return self.service_name
+
+    class Meta:
+        verbose_name = "Складская обработка"
+        verbose_name_plural = "Складская обработка"
 
 
 # 2. Модель для регистрации на маркетплейсах
@@ -21,6 +24,10 @@ class MarketplaceRegistration(models.Model):
 
     def __str__(self):
         return self.marketplace_name
+
+    class Meta:
+        verbose_name = "Регистрация на маркетплейсах"
+        verbose_name_plural = "Регистрация на маркетплейсах"
 
 
 # 3. Модель для доставки по схеме FBO
@@ -35,6 +42,10 @@ class DeliveryFBO(models.Model):
     def __str__(self):
         return f"{self.marketplace_name} - {self.location}"
 
+    class Meta:
+        verbose_name = "Доставка по схеме FBO"
+        verbose_name_plural = "Доставка по схеме FBO"
+
 
 # 4. Модель для доставки по схеме FBS
 class DeliveryFBS(models.Model):
@@ -46,6 +57,10 @@ class DeliveryFBS(models.Model):
     def __str__(self):
         return self.marketplace_name
 
+    class Meta:
+        verbose_name = "Доставка по схеме FBS"
+        verbose_name_plural = "Доставка по схеме FBS"
+
 
 # 5. Модель для хранения
 class Storage(models.Model):
@@ -55,6 +70,10 @@ class Storage(models.Model):
 
     def __str__(self):
         return self.item_type
+
+    class Meta:
+        verbose_name = "Хранение"
+        verbose_name_plural = "Хранение"
 
 
 # 6. Модель для создания контента
@@ -66,6 +85,10 @@ class ContentCreation(models.Model):
     def __str__(self):
         return self.service_name
 
+    class Meta:
+        verbose_name = "Создание контента"
+        verbose_name_plural = "Создание контента"
+
 
 # 7. Модель для продвижения
 class Promotion(models.Model):
@@ -74,3 +97,7 @@ class Promotion(models.Model):
 
     def __str__(self):
         return self.service_name
+
+    class Meta:
+        verbose_name = "Продвижение"
+        verbose_name_plural = "Продвижение"
