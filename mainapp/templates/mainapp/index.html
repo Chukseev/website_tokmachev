@@ -15,10 +15,10 @@
     {% include 'mainapp/hero.html' %}
     <section class="section prices">
         <div class="container">
-            {% include 'mainapp/table.html' with items=warehouse_processing_items %}
-            {% include 'mainapp/table.html' with items=warehouse_processing_items %}
-            {% include 'mainapp/table.html' with items=warehouse_processing_items %}
-            {% include 'mainapp/table.html' with items=warehouse_processing_items %}
+            {% for table in tables %}
+                {% include 'mainapp/table.html' with table=table %}
+            {% endfor %}
+
         </div>
     </section>
 <!--    <section class="section callback">-->

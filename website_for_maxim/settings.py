@@ -8,7 +8,7 @@ SECRET_KEY = 'no_secret'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.114', 'localhost', '127.0.0.1']
 
 
 INSTALLED_APPS = [

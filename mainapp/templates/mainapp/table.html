@@ -2,20 +2,21 @@
 <div class="table-container">
 <!--    Вот это хочу получать-->
     <link rel="stylesheet" href="{% static 'mainapp/styles/table.css' %}">
-    <h3>{{ warehouse_processing_items }}</h3>
+    <h3>{{ table.table_title }}</h3>
     <table>
         <thead>
         <tr>
-<!--            и это-->
-            <th>     </th>
-            <th>Стоимость услуг</th>
+            {% for header in table.table_headers %}
+            <th>{{ header }}</th>
+            {% endfor %}
         </tr>
         </thead>
         <tbody>
-        {% for el in warehouse_processing_items %}
+        {% for row in table.table_rows %}
         <tr>
-            <td>{{ el }}</td>
-            <td>{{ el.price }} {{el.unit}}</td>
+            {% for data in row %}
+            <td>{{ data }}</td>
+            {% endfor %}
         </tr>
         {% endfor %}
         </tbody>

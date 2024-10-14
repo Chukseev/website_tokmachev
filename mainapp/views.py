@@ -126,12 +126,14 @@ def index(request):
         ]
     }
     context = {
-        'warehouse_processing_data': warehouse_processing_data,
-        'marketplace_registration_data': marketplace_registration_data,
-        'delivery_fbo_data': delivery_fbo_data,
-        'delivery_fbs_data': delivery_fbs_data,
-        'storage_data': storage_data,
-        'content_creation_data': content_creation_data,
-        'promotion_data': promotion_data
+        'tables' : [
+            warehouse_processing_data,
+            marketplace_registration_data,
+            delivery_fbo_data,
+            delivery_fbs_data,
+            storage_data,
+            content_creation_data,
+            promotion_data
+        ]
     }
     return render(request, 'mainapp/index.html', context)
