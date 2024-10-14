@@ -1,10 +1,18 @@
 .hero {
+    position: relative;
+    max-height: 100vh;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
     background-image: url("../images/hero_background.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    max-height: 100vh;
+    filter: brightness(50%);
 }
 
 .hero__content {
