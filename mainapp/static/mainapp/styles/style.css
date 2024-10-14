@@ -149,6 +149,32 @@ svg * {
     }
 }
 
+@font-face {
+    font-family: 'FuturaPT';
+    src: url('../fonts/FuturaPT-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FuturaPT';
+    src: url('../fonts/FuturaPTCond-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FuturaPT';
+    src: url('../fonts/FuturaPTCond-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+a {
+    text-decoration: none;
+}
+
 
 :root {
     --color-accent-blue: #199ac9;
@@ -158,13 +184,23 @@ svg * {
 }
 
 body {
-//margin: 0;
     font-family: var(--font-family-base), serif;
 }
 
+body * {
+    /*outline: 1px solid red;*/
+}
+
 .container {
+    margin: 0 auto;
+    padding-inline: 10px;
+    max-width: 1200px;
 }
 
 .text-color-accent {
     color: var(--color-accent-green);
+}
+
+.no-wrap {
+    white-space: nowrap;
 }
