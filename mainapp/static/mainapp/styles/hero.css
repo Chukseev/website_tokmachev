@@ -1,0 +1,24 @@
+.hero {
+    background-image: url("../images/hero_background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    max-height: 100vh;
+}
+
+.hero__content {
+    display: flex;
+    align-items: center;
+    min-height: 200px;
+}
+
+.hero__title {
+    color: #fff;
+    max-width: 50vw;
+    line-height: 1;
+    font-size: clamp(24px, 4.75vw, 72px);
+    font-weight: 500;
+    margin: 0;
+    padding-block: 100px;
+}

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -5,40 +6,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="{% static 'mainapp/styles/style.css' %}">
     <title>Market</title>
 </head>
 <body>
-<header class="header">
-    <div class="header__wrapper">
-        <a class="header__logo" href="#">
-            <img src="/src/img/logo.jpg" alt="ATM Logo" height="40" width="40">
-        </a>
-        <div class="header__actions">
-        </div>
-
-    </div>
-</header>
+    {% include 'mainapp/header.html' %}
 <main>
-    <section class="section hero">
-        <div class="container">
-            <div class="hero__content">
-                <h1 class="hero__title">Цены и тарифы <span class="text-color-accent">на фулфилмент</span></h1>
-            </div>
-        </div>
-    </section>
+    {% include 'mainapp/hero.html' %}
     <section class="section prices">
         <div class="container">
             {% include 'mainapp/table.html' with items=warehouse_processing_items %}
         </div>
     </section>
-    <section class="section callback">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+<!--    <section class="section callback">-->
+<!--        <form method="post">-->
+<!--            {% csrf_token %}-->
+<!--            {{ form.as_p }}-->
+<!--            <button type="submit">Submit</button>-->
+<!--        </form>-->
+<!--    </section>-->
 </main>
 <footer>
 
