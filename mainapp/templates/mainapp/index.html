@@ -10,6 +10,7 @@
     <title>Market</title>
 </head>
 <body>
+    {% include 'mainapp/modal.html' %}
     {% include 'mainapp/header.html' %}
 <main>
     {% include 'mainapp/hero.html' %}
@@ -21,16 +22,10 @@
 
         </div>
     </section>
-<!--    <section class="section callback">-->
-<!--        <form method="post">-->
-<!--            {% csrf_token %}-->
-<!--            {{ form.as_p }}-->
-<!--            <button type="submit">Submit</button>-->
-<!--        </form>-->
-<!--    </section>-->
 </main>
 <footer>
 
 </footer>
+    <script src="{% static 'mainapp/js/index.js' %}"></script>
 </body>
 </html>
