@@ -215,6 +215,14 @@ button {
     padding-block: 10px;
 }
 
+button:hover {
+    filter: brightness(1.1);
+}
+
+button:active {
+    filter: brightness(0.8);
+}
+
 
 form {
     display: flex;
@@ -236,6 +244,11 @@ input:focus, textarea:focus {
     box-shadow: 0 0 4px 0 var(--color-accent-blue) inset;
     border: none;
     outline: none;
+}
+
+textarea {
+    min-height: 100px;
+    resize: none;
 }
 
 .form__fields {
