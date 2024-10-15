@@ -177,10 +177,12 @@ a {
 
 
 :root {
-    --color-accent-blue: #199ac9;
+    --color-accent-blue: #519ab5;
     --color-accent-green: #4fe4a0;
 
     --font-family-base: 'FuturaPT', sans-serif;
+
+    --border-radius: 6px;
 }
 
 body {
@@ -193,7 +195,7 @@ body * {
 
 .container {
     margin: 0 auto;
-    padding-inline: 10px;
+    padding-inline: 80px;
     max-width: 1200px;
 }
 
@@ -203,4 +205,67 @@ body * {
 
 .no-wrap {
     white-space: nowrap;
+}
+button {
+    background: var(--color-accent-blue);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding-inline: 25px;
+    padding-block: 10px;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+button:active {
+    filter: brightness(0.8);
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+input, textarea {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 2px 0 #6a6a6a inset;
+    padding-block: 4px;
+    padding-inline: 10px;
+    font-weight: 300;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 4px 0 var(--color-accent-blue) inset;
+    border: none;
+    outline: none;
+}
+
+textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+.form__fields {
+}
+
+label {
+    font-size: 20px;
+}
+
+.form__inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding-inline: 10px;
+    };
 }
