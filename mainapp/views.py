@@ -126,6 +126,7 @@ def index(request):
         ]
     }
     context = {
+        'form': form,
         'tables' : [
             warehouse_processing_data,
             marketplace_registration_data,
