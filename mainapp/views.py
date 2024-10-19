@@ -10,16 +10,12 @@ def index(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Обработка данных формы, например, отправка email
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            # Логика обработки формы
             status = send_telegram_message(name, email, message)
 
-
             if status == 200:
-                # Если это AJAX запрос
                 if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                     return JsonResponse({'success': True, 'name': name})
                 else:

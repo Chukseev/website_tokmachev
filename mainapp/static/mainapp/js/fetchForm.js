@@ -7,7 +7,6 @@ const modalBody = document.querySelector('.modal__body');
 export const initFetchForm = () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log('бибаребух')
         const formData = new FormData(form);
         fetch('', {
             method: 'POST',
