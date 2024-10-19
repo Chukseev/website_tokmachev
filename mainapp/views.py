@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import (WarehouseProcessing, MarketplaceRegistration, DeliveryFBO, DeliveryFBS, Storage, ContentCreation,
                      Promotion)
 from .forms import ContactForm
@@ -16,14 +17,21 @@ def index(request):
             # Логика обработки формы
             status = send_telegram_message(name, email, message)
 
+
             if status == 200:
-                # Сообщение успешно отправлено
-                return render(request, 'mainapp/thanks.html', {'name': name})
+                # Если это AJAX запрос
+                if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                    return JsonResponse({'success': True, 'name': name})
+                else:
+                    return render(request, 'mainapp/thanks.html', {'name': name})
             else:
-                # Произошла ошибка при отправке сообщения
-                return render(request, 'contact.html', {'form': form, 'error': 'Failed to send message to Telegram'})
+                if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                    return JsonResponse({'success': False, 'error': 'Failed to send message to Telegram'})
+                else:
+                    return render(request, 'contact.html', {'form': form, 'error': 'Failed to send message to Telegram'})
     else:
         form = ContactForm()
+
      # 1. Складская обработка
     warehouse_processing = WarehouseProcessing.objects.all()
     warehouse_processing_data = {

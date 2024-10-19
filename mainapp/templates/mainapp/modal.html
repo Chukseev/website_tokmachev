@@ -7,7 +7,7 @@
             <button class="closeButton" id="closeModal" aria-label="Закрыть модальное окно">&times;</button>
         </div>
         <div class="modal__body">
-            <form method="post">
+            <form id="callForm" method="post">
                 {% csrf_token %}
                 <div class="form__fields">
                     <div class="form__inputContainer">
@@ -25,6 +25,8 @@
                 </div>
                 <button type="submit">Отправить</button>
             </form>
+            <p class="requestSuccess" hidden>Заявка отправлена. Спасибо!</p>
+            <p class="requestOnError" hidden>Произошла ошибка отправки заявки. Попробуйте ещё раз.</p>
         </div>
     </div>
 </div>

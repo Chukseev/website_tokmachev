@@ -10,7 +10,7 @@
     <title>Market</title>
 </head>
 <body>
-    {% include 'mainapp/modal.html' %}
+    {% include 'mainapp/modal.html' with form=form  %}
     {% include 'mainapp/header.html' %}
 <main>
     {% include 'mainapp/hero.html' %}
@@ -23,9 +23,6 @@
         </div>
     </section>
 </main>
-<footer>
-
-</footer>
-    <script src="{% static 'mainapp/js/index.js' %}"></script>
+    <script src="{% static 'mainapp/js/index.js' %}" type="module"></script>
 </body>
 </html>
