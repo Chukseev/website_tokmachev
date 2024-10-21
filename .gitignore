@@ -1,1 +1,4 @@
 venv
+.idea
+*.pyc
+website_for_maxim/settings.py
