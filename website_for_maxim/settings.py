@@ -1,14 +1,15 @@
 from pathlib import Path
+from decouple import config, Csv
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'no_secret'
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['192.168.0.114', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 INSTALLED_APPS = [

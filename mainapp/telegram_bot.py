@@ -1,9 +1,11 @@
 import requests
+from decouple import config, Csv
+import os
 
 
 def send_telegram_message(name, email, message):
-    bot_token = ''  # Ваш токен бота
-    chat_id = ''  # Ваш Chat ID (ID чата, куда нужно отправить сообщение)
+    bot_token = config('BOT_TOKEN')
+    chat_id = config('CHAT_ID')
 
     text = f"Вам отправили сообшение:\n\nName: {name}\nEmail: {email}\nMessage: {message}"
 
