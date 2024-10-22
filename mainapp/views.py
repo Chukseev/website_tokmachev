@@ -12,10 +12,12 @@ def index(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']  # Номер телефона будет в формате +7XXXXXXXXXX
             message = form.cleaned_data['message']
-            status = send_telegram_message(name, email, message)
 
-            if status == 200:
+            # Отправляем сообщение в Telegram
+            telegram_status = send_telegram_message(name, email, message, phone)
+            if telegram_status == 200:
                 if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                     return JsonResponse({'success': True, 'name': name})
                 else:
@@ -24,11 +26,12 @@ def index(request):
                 if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                     return JsonResponse({'success': False, 'error': 'Failed to send message to Telegram'})
                 else:
-                    return render(request, 'contact.html', {'form': form, 'error': 'Failed to send message to Telegram'})
+                    return render(request, 'contact.html',
+                                  {'form': form, 'error': 'Failed to send message to Telegram'})
     else:
         form = ContactForm()
 
-     # 1. Складская обработка
+    # 1. Складская обработка
     warehouse_processing = WarehouseProcessing.objects.all()
     warehouse_processing_data = {
         'table_title': 'СКЛАДСКАЯ ОБРАБОТКА',
