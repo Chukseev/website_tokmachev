@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import (WarehouseProcessing, MarketplaceRegistration, DeliveryFBO, DeliveryFBS, Storage, ContentCreation,
                      Promotion)
 from .forms import ContactForm
@@ -9,22 +10,28 @@ def index(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Обработка данных формы, например, отправка email
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']  # Номер телефона будет в формате +7XXXXXXXXXX
             message = form.cleaned_data['message']
-            # Логика обработки формы
-            status = send_telegram_message(name, email, message)
 
-            if status == 200:
-                # Сообщение успешно отправлено
-                return render(request, 'mainapp/thanks.html', {'name': name})
+            # Отправляем сообщение в Telegram
+            telegram_status = send_telegram_message(name, email, message, phone)
+            if telegram_status == 200:
+                if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                    return JsonResponse({'success': True, 'name': name})
+                else:
+                    return render(request, 'mainapp/thanks.html', {'name': name})
             else:
-                # Произошла ошибка при отправке сообщения
-                return render(request, 'contact.html', {'form': form, 'error': 'Failed to send message to Telegram'})
+                if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                    return JsonResponse({'success': False, 'error': 'Failed to send message to Telegram'})
+                else:
+                    return render(request, 'contact.html',
+                                  {'form': form, 'error': 'Failed to send message to Telegram'})
     else:
         form = ContactForm()
-     # 1. Складская обработка
+
+    # 1. Складская обработка
     warehouse_processing = WarehouseProcessing.objects.all()
     warehouse_processing_data = {
         'table_title': 'СКЛАДСКАЯ ОБРАБОТКА',
@@ -126,6 +133,7 @@ def index(request):
         ]
     }
     context = {
+        'form': form,
         'tables' : [
             warehouse_processing_data,
             marketplace_registration_data,

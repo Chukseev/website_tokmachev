@@ -7,12 +7,8 @@
             <button class="closeButton" id="closeModal" aria-label="Закрыть модальное окно">&times;</button>
         </div>
         <div class="modal__body">
-<!--            <form method="post">-->
-<!--                {% csrf_token %}-->
-<!--                {{ form.as_p }}-->
-<!--                <button type="submit">Submit</button>-->
-<!--            </form>-->
-            <form action="/submit" method="POST">
+            <form id="callForm" method="post">
+                {% csrf_token %}
                 <div class="form__fields">
                     <div class="form__inputContainer">
                         <label for="name">Имя:</label>
@@ -23,12 +19,18 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form__inputContainer">
+                        <label for="phone">Номер телефона:</label>
+                        <input type="text" id="phone" name="phone" value="+7" required>
+                    </div>
+                    <div class="form__inputContainer">
                         <label for="message">Сообщение:</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
                 </div>
                 <button type="submit">Отправить</button>
             </form>
+            <p class="requestSuccess" hidden>Заявка отправлена. Спасибо!</p>
+            <p class="requestOnError" hidden>Произошла ошибка отправки заявки. Попробуйте ещё раз.</p>
         </div>
     </div>
 </div>
